@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.db import models, connection
 from django.db.models.fields.related import create_many_related_manager, ManyToManyRel
-
+from django.db.models import signals
 
 class RelationshipStatusManager(models.Manager):
     # convenience methods to handle some default statuses
@@ -171,4 +171,42 @@ else:
 
 #HACK
 field.contribute_to_class(User, 'relationships')
-setattr(User, 'relationships', RelationshipsDescriptor())
+setattr(User, 'relationships', RelationshipsDescriptor())    
+
+if "notification" in settings.INSTALLED_APPS:
+    from notification import models as notification
+    
+    def notification_handler(instance, action):
+        print "notification handler"
+        print action
+        print instance
+        print instance.status.verb
+    
+        if instance.status.verb != 'block' and instance.status.verb != 'follow':
+            return
+            
+        # Notice to 'yourself'
+        notice_type = "%s_%s" % (instance.status.from_slug, action)
+        notification.send([instance.from_user], notice_type, { "to_user" : instance.to_user })
+        
+        # Notice to the other user
+        notice_type = "%s_%s" % (instance.status.to_slug, action)
+        notification.send([instance.to_user], notice_type, { "from_user" : instance.from_user })
+        
+        # Notices to people following 'yourself', but not for private relations
+        # FIXME: exclude the target!
+        if not instance.status.private:
+            notice_type = "follower_%s_%s" % (instance.status.from_slug, "add")
+            receiver = instance.from_user.relationships.following().exclude(pk=instance.to_user.pk)
+            if receiver:
+                notification.send(receiver, notice_type, { "from_user" : instance.from_user, "from_user" : instance.to_user })
+
+    def notification_relationship_save(sender, *args, **kwargs):
+        if kwargs["created"]:        
+            notification_handler(kwargs["instance"], "add")
+
+    def notification_relationship_delete(sender, *args, **kwargs):
+        notification_handler(kwargs["instance"], "remove")
+    
+    signals.post_save.connect(notification_relationship_save, Relationship)
+    signals.post_delete.connect(notification_relationship_delete, Relationship)    
