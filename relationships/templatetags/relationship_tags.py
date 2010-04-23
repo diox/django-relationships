@@ -2,9 +2,12 @@ import re
 from django import template
 from django.core.urlresolvers import reverse
 from django.db.models import Q
+from django.db.models.loading import get_model
 from django.template import TemplateSyntaxError
+from django.utils.functional import wraps
 
 from relationships.models import Relationship, RelationshipStatus
+from relationships.utils import positive_filter, negative_filter
 
 register = template.Library()
 
@@ -101,3 +104,49 @@ def remove_relationship_url(user, status):
     if isinstance(status, RelationshipStatus):
         status = status.from_slug
     return reverse('relationship_remove', args=[user.username, status])
+
+def positive_filter_decorator(func):
+    def inner(qs, user):
+        if isinstance(qs, basestring):
+            model = get_model(*qs.split('.'))
+            if not model:
+                return []
+            qs = model._default_manager.all()
+        if user.is_anonymous():
+            return qs.none()
+        return func(qs, user)
+    inner._decorated_function = getattr(func, '_decorated_function', func)
+    return wraps(func)(inner)
+
+def negative_filter_decorator(func):
+    def inner(qs, user):
+        if isinstance(qs, basestring):
+            model = get_model(*qs.split('.'))
+            if not model:
+                return []
+            qs = model._default_manager.all()
+        if user.is_anonymous():
+            return qs
+        return func(qs, user)
+    inner._decorated_function = getattr(func, '_decorated_function', func)
+    return wraps(func)(inner)
+
+@register.filter
+@positive_filter_decorator
+def friend_content(qs, user):
+    return positive_filter(qs, user.relationships.friends())
+
+@register.filter
+@positive_filter_decorator
+def following_content(qs, user):
+    return positive_filter(qs, user.relationships.following())
+
+@register.filter
+@positive_filter_decorator
+def followers_content(qs, user):
+    return positive_filter(qs, user.relationships.followers())
+
+@register.filter
+@negative_filter_decorator
+def unblocked_content(qs, user):
+    return negative_filter(qs, user.relationships.blocking())
