@@ -177,10 +177,6 @@ if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
     
     def notification_handler(instance, action):
-        print "notification handler"
-        print action
-        print instance
-        print instance.status.verb
     
         if instance.status.verb != 'block' and instance.status.verb != 'follow':
             return
@@ -193,10 +189,9 @@ if "notification" in settings.INSTALLED_APPS:
         notice_type = "%s_%s" % (instance.status.to_slug, action)
         notification.send([instance.to_user], notice_type, { "from_user" : instance.from_user })
         
-        # Notices to people following 'yourself', but not for private relations
-        # FIXME: exclude the target!
+        # Notices to people following 'yourself' (excluding the target), but not for private relations
         if not instance.status.private:
-            notice_type = "follower_%s_%s" % (instance.status.from_slug, "add")
+            notice_type = "follower_%s_%s" % (instance.status.from_slug, action)
             receiver = instance.from_user.relationships.following().exclude(pk=instance.to_user.pk)
             if receiver:
                 notification.send(receiver, notice_type, { "from_user" : instance.from_user, "from_user" : instance.to_user })
