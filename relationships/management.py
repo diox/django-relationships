@@ -15,6 +15,9 @@ if "notification" in settings.INSTALLED_APPS:
         notification.create_notice_type("blocking_remove", _("Unblocking"), _("you stopped blocking an user"), default=1)        
         notification.create_notice_type("following_remove", _("Unfollowing"), _("you have stopped following an user"), default=1)
         
+        notification.create_notice_type("blockers_remove", _("Unblocked"), _("an user stopped blocking you"), default=1)
+        notification.create_notice_type("followers_remove", _("Unfollowed"), _("an user stopped following you"), default=1)        
+        
         notification.create_notice_type("follower_following_add", _("Followed Started Following"), 
                                         _("an user you are following started following another user"), default=1)
         notification.create_notice_type("follower_following_remove", _("Followed Stopped Following"), 
