@@ -192,9 +192,9 @@ if "notification" in settings.INSTALLED_APPS:
         # Notices to people following 'yourself' (excluding the target), but not for private relations
         if not instance.status.private:
             notice_type = "follower_%s_%s" % (instance.status.from_slug, action)
-            receiver = instance.from_user.relationships.following().exclude(pk=instance.to_user.pk)
+            receiver = instance.from_user.relationships.followers().exclude(pk=instance.to_user.pk)
             if receiver:
-                notification.send(receiver, notice_type, { "from_user" : instance.from_user, "from_user" : instance.to_user })
+                notification.send(receiver, notice_type, { "from_user" : instance.from_user, "to_user" : instance.to_user })
 
     def notification_relationship_save(sender, *args, **kwargs):
         if kwargs["created"]:        
