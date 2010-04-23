@@ -1,0 +1,2 @@
+{% load i18n %}{% url profile_detail username=to_user.username as to_user_url %}
+{% blocktrans %}You are now blocking <a href="{{ to_user_url }}">{{ to_user }}</a>.{% endblocktrans %}
