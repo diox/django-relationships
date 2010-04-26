@@ -30,8 +30,10 @@ class IfRelationshipNode(template.Node):
                 Q(symmetrical_slug=self.status))
         except RelationshipStatus.DoesNotExist:
             raise template.TemplateSyntaxError('RelationshipStatus not found')
-        
-        if status.from_slug == self.status:
+            
+        if to_user.is_anonymous() or from_user.is_anonymous():
+            val = False
+        elif status.from_slug == self.status:
             val = from_user.relationships.exists(to_user, status)
         elif status.to_slug == self.status:
             val = to_user.relationships.exists(from_user, status)
