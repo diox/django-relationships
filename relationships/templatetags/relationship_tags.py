@@ -106,6 +106,20 @@ def remove_relationship_url(user, status):
     if isinstance(status, RelationshipStatus):
         status = status.from_slug
     return reverse('relationship_remove', args=[user.username, status])
+    
+@register.filter
+def show_relationships_url(user, status):
+    """
+    Generate a url for showing a relationship list for a given user.  ``user`` is a
+    User object, and ``status`` is either a relationship_status object or a 
+    string matching the ``from_slug`` of a RelationshipStatus
+    
+    Usage:
+    href="{{ user|show_relationships_url:"following" }}"
+    """
+    if isinstance(status, RelationshipStatus):
+        status = status.from_slug
+    return reverse('relationship_list', args=[user.username, status])
 
 def positive_filter_decorator(func):
     def inner(qs, user):
