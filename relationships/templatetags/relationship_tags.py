@@ -152,3 +152,19 @@ def followers_content(qs, user):
 @negative_filter_decorator
 def unblocked_content(qs, user):
     return negative_filter(qs, user.relationships.blocking())
+    
+@register.filter
+def friends(user, limit=5):
+    return user.relationships.friends()[:limit]
+
+@register.filter
+def following(user, limit=5):
+    return user.relationships.following()[:limit]
+
+@register.filter
+def followers(user, limit=5):
+    return user.relationships.followers()[:limit]
+
+@register.filter
+def blocking(user, limit=5):
+    return user.relationships.blocking()[:limit]
