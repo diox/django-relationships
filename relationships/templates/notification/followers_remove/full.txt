@@ -1,0 +1,5 @@
+{% load i18n %}{% url profile_detail username=from_user.username as from_user_url %}
+{% blocktrans %}{{ from_user }} is no longer following you.
+
+http://{{ current_site }}{{ from_user_url }}
+{% endblocktrans %}

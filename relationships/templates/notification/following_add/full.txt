@@ -1,0 +1,5 @@
+{% load i18n %}{% url profile_detail username=to_user.username as to_user_url %}
+{% blocktrans %}You are now following {{ to_user }}.
+
+http://{{ current_site }}{{ to_user_url }}
+{% endblocktrans %}
