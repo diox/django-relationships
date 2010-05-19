@@ -3,188 +3,189 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: django-relationships\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-19 16:26+0200\n"
-"PO-Revision-Date: 2010-04-23 11:10+0200\n"
-"Last-Translator: Jannis Leidel <jannis@leidel.info>\n"
-"Language-Team: de <de@li.org>\n"
+"PO-Revision-Date: 2010-05-19 16:29+0100\n"
+"Last-Translator: Mathieu Pillard <m.pillard@liberation.fr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #: management.py:9
 msgid "Blocking"
-msgstr ""
+msgstr "Bloque"
 
 #: management.py:9
 msgid "You have started blocking an user"
-msgstr ""
+msgstr "Vous avez bloqué un utilisateur"
 
 #: management.py:10
 msgid "Following"
-msgstr ""
+msgstr "Suit"
 
 #: management.py:10
 msgid "You have started following an user"
-msgstr ""
+msgstr "Vous avez commencer à suivre un utilisateur"
 
 #: management.py:12
 msgid "Blocked"
-msgstr ""
+msgstr "Bloqué"
 
 #: management.py:12
 msgid "An user started blocking you"
-msgstr ""
+msgstr "Un utilisateur vous a bloqué"
 
 #: management.py:13
 msgid "Followed"
-msgstr ""
+msgstr "Est suivi"
 
 #: management.py:13
 msgid "An user started following you"
-msgstr ""
+msgstr "Un utilisateur a commencé à vous suivre"
 
 #: management.py:15
 msgid "Unblocking"
-msgstr ""
+msgstr "Dé-bloque"
 
 #: management.py:15
 msgid "You stopped blocking an user"
-msgstr ""
+msgstr "Vous avez débloqué un utilisateur"
 
 #: management.py:16
 msgid "Unfollowing"
-msgstr ""
+msgstr "Arrête de suivre"
 
 #: management.py:16
 msgid "You have stopped following an user"
-msgstr ""
+msgstr "vous avez arrêter de suivre un utilisateur"
 
 #: management.py:18
 msgid "Unblocked"
-msgstr ""
+msgstr "Débloqué"
 
 #: management.py:18
 msgid "An user stopped blocking you"
-msgstr ""
+msgstr "Un utilisateur a arrêter de vous bloquer"
 
 #: management.py:19
 msgid "Unfollowed"
-msgstr ""
+msgstr "N'est plus suivi"
 
 #: management.py:19
 msgid "An user stopped following you"
-msgstr ""
+msgstr "Un utilisateur a arrêté de vous suivre"
 
 #: management.py:21
 msgid "Followed Started Following"
-msgstr ""
+msgstr "Suivi suit"
 
 #: management.py:22
+#, fuzzy
 msgid "An user you are following started following another user"
-msgstr ""
+msgstr "Vous avez commencer à suivre un utilisateur"
 
 #: management.py:23
 msgid "Followed Stopped Following"
-msgstr ""
+msgstr "Suivi arrête de suivre"
 
 #: management.py:24
+#, fuzzy
 msgid "An user you are following stopped following another user"
-msgstr ""
+msgstr "vous avez arrêter de suivre un utilisateur"
 
 #: models.py:27
 msgid "name"
-msgstr "Name"
+msgstr "nom"
 
 #: models.py:28
 msgid "verb"
-msgstr "Verb"
+msgstr "verbe"
 
 #: models.py:29
 msgid "from slug"
-msgstr "diesseitiges Kürzel"
+msgstr ""
 
 #: models.py:30
 msgid "Denote the relationship from the user, i.e. 'following'"
-msgstr "Bezeichnet die Beziehung vonseiten eines Benutzers, z.B. 'following'"
+msgstr "Représente la relation depuis l'utilisateur, par exemple \"following\""
 
 #: models.py:31
 msgid "to slug"
-msgstr "jenseitiges Kürzel"
+msgstr ""
 
 #: models.py:32
 msgid "Denote the relationship to the user, i.e. 'followers'"
-msgstr "Bezeichnet die Beziehung zu einem Benutzer, z.B. 'followers'"
+msgstr "Représente la relation vers l'utilisateur, par exemple \"followers\""
 
 #: models.py:33
 msgid "symmetrical slug"
-msgstr "symmetrisches Kürzel"
+msgstr ""
 
 #: models.py:34
 msgid "When a mutual relationship exists, i.e. 'friends'"
-msgstr "Wenn eine gegenseitige Beziehung vorliegt, z.B. 'friends'"
+msgstr "Lorsqu'une relation mutuelle existe, par exemple 'friends'"
 
 #: models.py:35
 msgid "login required"
-msgstr "Anmeldung erforderlich"
+msgstr ""
 
 #: models.py:36
 msgid "Users must be logged in to see these relationships"
-msgstr "Benutzer müssen angemeldet sein, um diese Beziehungen zu sehen"
+msgstr "Les utilisateurs doivent être authentifiés pour voir ces relations"
 
 #: models.py:37
 msgid "private"
-msgstr "Privat"
+msgstr ""
 
 #: models.py:38
 msgid "Only the user who owns these relationships can see them"
-msgstr "Nur der Inhaber der Beziehung kann sie sehen"
+msgstr "Seul l'utilisateur ayant initié ces relations peut les voir"
 
 #: models.py:44
 msgid "Relationship status"
-msgstr "Beziehungsstatus"
+msgstr ""
 
 #: models.py:45
 msgid "Relationship statuses"
-msgstr "Beziehungsstatus"
+msgstr ""
 
 #: models.py:53
 msgid "from user"
-msgstr "Von Benutzer"
+msgstr ""
 
 #: models.py:55
 msgid "to user"
-msgstr "Zu Benutzer"
+msgstr ""
 
 #: models.py:56
 msgid "status"
-msgstr "Status"
+msgstr ""
 
 #: models.py:57
 msgid "created"
-msgstr "Erstellt"
+msgstr ""
 
 #: models.py:59
 msgid "site"
-msgstr "Seite"
+msgstr ""
 
 #: models.py:64
 msgid "Relationship"
-msgstr "Beziehung"
+msgstr ""
 
 #: models.py:65
 msgid "Relationships"
-msgstr "Beziehungen"
+msgstr ""
 
 #: models.py:68
 #, python-format
 msgid "Relationship from %(from_user)s to %(to_user)s"
-msgstr "Beziehung von %(from_user)s zu %(to_user)s"
+msgstr "Relation entre %(from_user)s et %(to_user)s"
 
 #: templates/notification/blockers_add/notice.html:2
 #, python-format
@@ -193,8 +194,7 @@ msgstr ""
 
 #: templates/notification/blockers_remove/notice.html:2
 #, python-format
-msgid ""
-"<a href=\"%(from_user_url)s\">%(from_user)s</a> is no longer blocking you."
+msgid "<a href=\"%(from_user_url)s\">%(from_user)s</a> is no longer blocking you."
 msgstr ""
 
 #: templates/notification/blocking_add/notice.html:2
@@ -209,16 +209,12 @@ msgstr ""
 
 #: templates/notification/follower_following_add/notice.html:2
 #, python-format
-msgid ""
-"<a href=\"%(from_user_url)s\">%(from_user)s</a> is now following <a href=\"%"
-"(to_user_url)s\">%(to_user)s</a>."
+msgid "<a href=\"%(from_user_url)s\">%(from_user)s</a> is now following <a href=\"%(to_user_url)s\">%(to_user)s</a>."
 msgstr ""
 
 #: templates/notification/follower_following_remove/notice.html:2
 #, python-format
-msgid ""
-"<a href=\"%(from_user_url)s\">%(from_user)s</a> is no longer following <a "
-"href=\"%(to_user_url)s\">%(to_user)s</a>."
+msgid "<a href=\"%(from_user_url)s\">%(from_user)s</a> is no longer following <a href=\"%(to_user_url)s\">%(to_user)s</a>."
 msgstr ""
 
 #: templates/notification/followers_add/notice.html:2
@@ -228,8 +224,7 @@ msgstr ""
 
 #: templates/notification/followers_remove/notice.html:2
 #, python-format
-msgid ""
-"<a href=\"%(from_user_url)s\">%(from_user)s</a> is no longer following you."
+msgid "<a href=\"%(from_user_url)s\">%(from_user)s</a> is no longer following you."
 msgstr ""
 
 #: templates/notification/following_add/notice.html:2
@@ -239,8 +234,7 @@ msgstr ""
 
 #: templates/notification/following_remove/notice.html:2
 #, python-format
-msgid ""
-"You are no longer following <a href=\"%(to_user_url)s\">%(to_user)s</a>."
+msgid "You are no longer following <a href=\"%(to_user_url)s\">%(to_user)s</a>."
 msgstr ""
 
 #: templates/relationships/confirm.html:4
@@ -250,10 +244,5 @@ msgstr ""
 
 #: templates/relationships/success.html:5
 msgid "Success"
-msgstr "Erfolg"
+msgstr "Succès"
 
-#~ msgid "Really?"
-#~ msgstr "Wirklich?"
-
-#~ msgid "Yes"
-#~ msgstr "Ja"
